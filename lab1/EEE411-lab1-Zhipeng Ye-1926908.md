@@ -108,7 +108,7 @@ angle_set =
 
 ###### Describe and analyze
 
-As we can see matlab supports original opeartions of vector and matrix including type of complex numbers. 
+As we can see that matlab supports original opeartions of vector and matrix including types of complex numbers. 
 
 ---
 
@@ -127,13 +127,13 @@ y_1=@(x) x.^2
 fplot(y_1, [0, 2])
 ```
 
-###### Below are the MATLAB outputs from Command Window
+###### Below are the MATLAB outputs 
 
 ![image-20191008225732838](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem2_1.png)
 
 ###### Describe and analyze
 
-Because anonymous function is very east to plot and fplot can simplify the painting. In a general method, we must generate a vector of input and get a vector of output. Then we use plot function by using these vectors.
+Because anonymous function is very easy to plot and fplot can simplify the painting. In a general method, we must generate a vector of input and get a vector of output. Then we use plot function by using these vectors.
 
 ---
 
@@ -183,7 +183,7 @@ legend('y_1=x^2','y_2=x^{(1/2)}')
 
 ###### Describe and analyze
 
-As we can see from diagram, we can use hold on command to make pictures in the same figure.
+As we can see from the diagram, we can use hold on command to make pictures in the same figure.
 
 ---
 
@@ -214,7 +214,7 @@ hold on
 
 ###### Describe and analyze
 
-I use the subplot function to display picture in the same figure.
+I use the subplot function to display the picture in the same figure.
 
 ---
 
@@ -262,7 +262,7 @@ ylabel('The angle of e^{j*2pi*t}')
 
 ###### Describe and analyze
 
-As we can see from result, the image of real part of $e^{j2\pi t}$ is same as the picture of $cos2\pi t$ and the image of imaginary part of $e^{j2 \pi t}$ is same as the picture of $sin2\pi t$.
+As we can see from results, the image of real part of $e^{j2\pi t}$ is same as the picture of $cos2\pi t$ and the image of imaginary part of $e^{j2 \pi t}$ is same as the picture of $sin2\pi t$.
 
 ---
 
@@ -422,7 +422,7 @@ Because this question doesn't ask us to display anything, so there is no result.
 
 ###### Describe and analyze
 
-I use piecewise function to implement $reac(t)$ and the parameter is a vector.
+I use the piecewise function to implement $rect(t)$ and the parameter is a vector.
 
 ---
 
@@ -701,7 +701,7 @@ ylabel('x_s')
 
 ###### Describe and analyze
 
-As we can see from diagram, It submits to $\frac{\delta (f-a/2\pi)+ \delta(f+a2 \pi)}{2i}$ in theory.
+As we can see from the diagram, It submits to $\frac{\delta (f-a/2\pi)+ \delta(f+a/2 \pi)}{2i}$ in theory.
 
 ---
 
@@ -777,7 +777,7 @@ ylabel('x_s')
 
 ###### Describe and analyze
 
-When I choose more sampling points, the spectrum become more detailed and accurate. On other hand, when $\frac{1}{\triangle T} \le 2 u_{max}$, the signal can't be recovered because It doesn't  correspond to Nyquist–Shannon sampling theorem.
+When I choose more sampling points, the spectrum become more detailed and accurate. On other hand, when $\frac{1}{\triangle T} \le 2 u_{max}$, the signal can't be recovered because It doesn't  correspond to the Nyquist–Shannon sampling theorem.
 
 ---
 
@@ -788,7 +788,7 @@ When I choose more sampling points, the spectrum become more detailed and accura
 ```matlab
 clear
 clc
-t = -2:0.01:2;
+t = -2:0.001:2;
 subplot(2, 1, 1)
 rect = rect_function(t);
 plot(t, rect);
@@ -798,7 +798,7 @@ xlabel('t axis')
 ylabel('rect_function')
 subplot(2, 1, 2)
 [f, s] = ft(t, rect);
-plot(f, abs(s))
+plot(f, s, '.-')
 grid on
 title('the frequency space of rect_function')
 xlabel('s axis')
@@ -807,8 +807,12 @@ ylabel('fourier transformation of rect_function')
 
 ###### Below are the MATLAB outputs 
 
-![image-20191011003303159](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_8.png)
+![image-20191011125837549](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_8.png)
 
 ###### Describe and analyze
 
-As we can see from result, the Fourier transform of rect function is $sinc$.
+As we can see from result, there are some difference between result and $sinc=\frac{sin\pi s}{\pi s}$. Because computer can't computer whole Fourier Transformation of the rectangular function. The Fourier Transformation formula is this.
+$$
+F rect(t)=\sum_{k=-\infty}^{\infty}a_k*e^{jk*(\frac{2\pi}{T})t}
+$$
+But computer can't compute infinity number in finity time, therefore the picture will not get the same structure of $sinc$.

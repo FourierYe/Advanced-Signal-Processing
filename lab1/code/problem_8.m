@@ -30,7 +30,7 @@ xlabel('t axis')
 ylabel('rect_function')
 subplot(2, 1, 2)
 [f, s] = ft(t, rect);
-plot(f, abs(s))
+plot(f, abs(s), '.-')
 grid on
 title('the frequency space of rect_function')
 xlabel('s axis')

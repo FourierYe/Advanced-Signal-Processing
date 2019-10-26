@@ -60,7 +60,7 @@ angle_x =
 
 ###### Describe and analyze
 
-For a complex number, we can image that it is a vector in the 2 dimension space. The angle of a complex number is the angle of this vector. It is convenient to calculate operations of complex numbers in Matlab.
+For a complex number, we can image that it is a vector in the 2 dimension space. The angle of a complex number is the angle of this vector. It is convenient to calculate operations of complex numbers in Matlab. I choose real() function to get the real part of complex number, imag() function to get  imaginary part, abs() to get the length, angle() to get the angle of complex number.
 
 ---
 
@@ -108,7 +108,7 @@ angle_set =
 
 ###### Describe and analyze
 
-As we can see that matlab supports original opeartions of vector and matrix including types of complex numbers. 
+As we can see that matlab supports original opeartions of vector and matrix , including types of complex numbers. In addition these numbers in 2 Dimension space are orthogonal to each others and they just have one part of the complex number.
 
 ---
 
@@ -133,7 +133,7 @@ fplot(y_1, [0, 2])
 
 ###### Describe and analyze
 
-Because anonymous function is very easy to plot and fplot can simplify the painting. In a general method, we must generate a vector of input and get a vector of output. Then we use plot function by using these vectors.
+Because anonymous function is very easy to plot and fplot can simplify the painting. In a general method, we must generate a vector of input and get a vector of output. we must sampling points,  because computers can't get continuous curve. Then we use plot function by using these vectors.
 
 ---
 
@@ -262,7 +262,7 @@ ylabel('The angle of e^{j*2pi*t}')
 
 ###### Describe and analyze
 
-As we can see from results, the image of real part of $e^{j2\pi t}$ is same as the picture of $cos2\pi t$ and the image of imaginary part of $e^{j2 \pi t}$ is same as the picture of $sin2\pi t$.
+As we can see from results, the image of real part of $e^{j2\pi t}$ is same as the picture of $cos2\pi t$ and the image of imaginary part of $e^{j2 \pi t}$ is same as the picture of $sin2\pi t$. Because $e^{j 2\pi t }$ is a helix in 3 dimension space and $sin 2\pi t, cos 2\pi t$ are the projection of this helix. In angle picture, we can find the period of $e^{j2\pi t}$ is 1. In absolute picture, the length of $e^{j 2\pi t}$ is 1.
 
 ---
 
@@ -452,15 +452,17 @@ This is a rectangle function with 1 unit width.
 
 ```matlab
 axis([-3,3,-2,2])
+xlabel('T time')
+ylabel('A amplitude')
 ```
 
 ###### Below are the MATLAB outputs 
 
-![image-20191009134229930](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem5_2.png)
+![image-20191025223821040](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem5_2.png)
 
 ###### Describe and analyze
 
-We can use axis function to change the range of display.
+We can use axis function to change the range of display and label, ylabe function to axis.
 
 ---
 
@@ -532,7 +534,7 @@ plot(t(col),sinc_set(col),'m+')
 
 ###### Describe and analyze
 
-As we can see from diagram, the function shake around the $zero(0)$ and the interval of zeros is constant because $sin(\pi t)$ is a period function but $kx$ is a nonperiodic function. So the combination of two functions is a period of $2 \pi / \pi$ function. 
+As we can see from diagram, the function shake around the $zero(0)$ and the interval of zeros is constant because $sin(\pi t)$ is a period function but $kx$ is a nonperiodic function. So the combination of two functions is a period of $2 \pi / \pi = 2$ function. 
 
 ---
 
@@ -547,20 +549,22 @@ As we can see from diagram, the function shake around the $zero(0)$ and the inte
 ```matlab
 clear
 clc
+
 subplot(2,2,1)
-t_1=0:2/(10*2*pi)/2000:16/(10*2*pi)
 f_1=10
+t_1=0:1/f_1/100:2*1/f_1
 x_1= 2*sin(2*pi*f_1*t_1)
 plot(t_1,x_1)
-axis([0 16/(10*2*pi) -2 2])
+axis([0 2*1/f_1 -2 2])
 title('The diagram of 2*sin(2*pi*f_1*t_1)')
 xlabel('t_1 axis')
+grid on
 ylabel('2*sin(2*pi*f_1*t_1)')
 ```
 
 ###### Below are the MATLAB outputs 
 
-![image-20191009150156929](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem7_1.png)
+![image-20191025225046196](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem7_1.png)
 
 ###### Describe and analyze
 
@@ -578,17 +582,18 @@ x_2= 2+x_1
 plot(t_1,x_2)
 axis([0 2*1/f_1 0 4])
 title('The diagram of 2*sin(2*pi*f_1*t_1)+2')
+grid on
 xlabel('t_1 axis')
 ylabel('2*sin(2*pi*f_1*t_1)+2')
 ```
 
 ###### Below are the MATLAB outputs 
 
-![image-20191009150701948](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem7_2.png)
+![image-20191025225320506](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem7_2.png)
 
 ###### Describe and analyze
 
-As we can see from diagram, the function of $2+x_1(t)$ shifts up of 2 units.
+As we can see from diagram, the function of $2+x_1(t)$ shifts up of 2 units in the vertical axis.
 
 ---
 
@@ -599,18 +604,19 @@ As we can see from diagram, the function of $2+x_1(t)$ shifts up of 2 units.
 ```matlab
 subplot(2,2,3)
 f_3=10*f_1
-t_1=0:2*1/f_1/100:2*1/f_1
+t_1=0:1/f_1/100:2*1/f_1
 x_3= sin(2*pi*f_3*t_1)
 plot(t_1,x_3)
 title('The diagram of sin(2*pi*f_3*t_1)')
 xlabel('t_1 axis')
 ylabel('sin(2*pi*f_3*t_1)')
+grid on
 axis([0 2*1/f_1 -1 1])
 ```
 
 ###### Below are the MATLAB outputs 
 
-![image-20191009152542896](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem7_3.png)
+![image-20191025230214094](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem7_3.png)
 
 ###### Describe and analyze
 
@@ -629,12 +635,13 @@ plot(t_1,x_4)
 title('The diagram of 2*sin(2*pi*f_1*t_1)*sin(2*pi*f_3*t_1)')
 xlabel('t_1 axis')
 ylabel('2*sin(2*pi*f_1*t_1)*sin(2*pi*f_3*t_1)')
+grid on
 axis([0 2*1/f_1 -2 2])
 ```
 
 ###### Below are the MATLAB outputs 
 
-![image-20191009152640663](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem7_4.png)
+![image-20191025230527820](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem7_4.png)
 
 ###### Describe and analyze
 
@@ -644,7 +651,7 @@ As we can see fron the result, the picture of $x_4(t)=x_1(t)*x_3(t)$ is a output
 
 ##### (e) Comment your results especially for $x_4(t)$. 
 
-The $x_4(t)=x_1(t)*x_3(t)=sin(2\pi f_1t)*sin(2\pi f_3 t)$ is similar to AM, because the formula of AM is $AM = [f(t)+1]*carrier wave$. The difference is that in general, we choose $cos$ functions as a carrer function, but in this experiment, we use the $sin$ function. 
+The $x_4(t)=x_1(t)*x_3(t)=sin(2\pi f_1t)*sin(2\pi f_3 t)$ is similar to AM, because the formula of AM is $AM = [f(t)+1]*carrier wave$. The difference is that in general, we choose $cos$ functions as a carrer function, but in this experiment, we use the $sin$ function.  
 
 ---
 
@@ -663,18 +670,19 @@ The $x_4(t)=x_1(t)*x_3(t)=sin(2\pi f_1t)*sin(2\pi f_3 t)$ is similar to AM, beca
 ```matlab
 clear
 clc
-t = 0:0.01:2
-x_t = cos(20*pi * t)
+t = 0:0.005:2
+x_t = sin(20*pi * t)
 subplot(2, 1, 1)
 plot(t, x_t)
-title('The time space of cos(20*\pi * t)')
+grid on
+title('The time space of sin(20*\pi * t)')
 xlabel('t axis')
-ylabel('x_t=cos(20*\pi * t)')
+ylabel('x_t=sin(20*\pi * t)')
 ```
 
 ###### Below are the MATLAB outputs 
 
-![image-20191009225913162](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_1.png)
+![image-20191025231302723](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_1.png)
 
 ###### Describe and analyze
 
@@ -689,19 +697,20 @@ I choose the $sin(20\pi t)$ as the signal $x(t)$.
 ```matlab
 [f, s] = ft(t, x_t)
 subplot(2, 1, 2)
-plot(f, s)
-title('The frequency space of cos(20*\pi * t)')
+plot(f, abs(s))
+grid on
+title('The frequency space of sin(20*\pi * t)')
 xlabel('s axis')
 ylabel('x_s')
 ```
 
 ###### Below are the MATLAB outputs 
 
-![image-20191009230014578](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_2.png)
+![image-20191025231509534](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_2.png)
 
 ###### Describe and analyze
 
-As we can see from the diagram, It submits to $\frac{\delta (f-a/2\pi)+ \delta(f+a/2 \pi)}{2i}$ in theory.
+As we can see from the diagram, It submits to $\frac{\delta (a)- \delta(-a)}{2i}$ in theory. But s is the complex number so I choose abs() to get its length.
 
 ---
 
@@ -713,7 +722,7 @@ I have done this step in step a and step b. The answer is included in question a
 
 (d)  Interpret your results;(2 points)
 
-The ouput is corresponding with theoretical result. Because the Fourier transform of $cos(t)$ is $\frac{\delta (f-a/2\pi)+ \delta(f+a/2 \pi)}{2i}$. For FFT, we must choose appropriate the frequency of sampling.
+The ouput is corresponding with theoretical result. Because the Fourier transform of $sin(t) $ is $\frac{\delta (a)- \delta(-a)}{2i}$. For FFT, we must choose appropriate the frequency of sampling.
 
 ---
 
@@ -724,28 +733,30 @@ The ouput is corresponding with theoretical result. Because the Fourier transfor
 ```matlab
 clear
 clc
-t = 0:0.01:10
-x_t = cos(20*pi * t)
+t = 0:0.005:10
+x_t = sin(20*pi * t)
 subplot(2, 1, 1)
 plot(t, x_t)
-title('The time space of cos(20*\pi * t)')
+grid on
+title('The time space of sin(20*\pi * t)')
 xlabel('t axis')
-ylabel('x_t=cos(20*\pi * t)')
+ylabel('x_t=sin(20*\pi * t)')
 [f, s] = ft(t, x_t)
 subplot(2, 1, 2)
-plot(f, s)
-title('The frequency space of cos(20*\pi * t)')
+plot(f, abs(s))
+grid on
+title('The frequency space of sin(20*\pi * t)')
 xlabel('s axis')
 ylabel('x_s')
 ```
 
 ###### Below are the MATLAB outputs 
 
-![image-20191009232810615](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_5.png)
+![image-20191025232729396](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_5.png)
 
 ###### Describe and analyze
 
-When I change the length of function to $[0 \ 10]$, the spectrum become more accurate.
+When I change the length of function to $[0 \ 10]$, the spectrum become more accurate, the line become more like $\delta$ function and $\delta$  become larger than before.
 
 ---
 
@@ -756,24 +767,26 @@ When I change the length of function to $[0 \ 10]$, the spectrum become more acc
 ```matlab
 clear
 clc
-t = 0:0.005:2
-x_t = cos(20*pi * t)
+t = 0:0.001:2
+x_t = sin(20*pi * t)
 subplot(2, 1, 1)
 plot(t, x_t)
-title('The time space of cos(20*\pi * t)')
+grid on
+title('The time space of sin(20*\pi * t)')
 xlabel('t axis')
-ylabel('x_t=cos(20*\pi * t)')
+ylabel('x_t=sin(20*\pi * t)')
 [f, s] = ft(t, x_t)
 subplot(2, 1, 2)
-plot(f, s)
-title('The frequency space of cos(20*\pi * t)')
+plot(f, abs(s))
+grid on
+title('The frequency space of sin(20*\pi * t)')
 xlabel('s axis')
 ylabel('x_s')
 ```
 
 ###### Below are the MATLAB outputs 
 
-![image-20191009235735565](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_6.png)
+![image-20191025233421272](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_6.png)
 
 ###### Describe and analyze
 
@@ -788,7 +801,7 @@ When I choose more sampling points, the spectrum become more detailed and accura
 ```matlab
 clear
 clc
-t = -2:0.001:2;
+t = -2:0.01:2;
 subplot(2, 1, 1)
 rect = rect_function(t);
 plot(t, rect);
@@ -798,7 +811,7 @@ xlabel('t axis')
 ylabel('rect_function')
 subplot(2, 1, 2)
 [f, s] = ft(t, rect);
-plot(f, s, '.-')
+plot(f, abs(s), '.-')
 grid on
 title('the frequency space of rect_function')
 xlabel('s axis')
@@ -807,7 +820,7 @@ ylabel('fourier transformation of rect_function')
 
 ###### Below are the MATLAB outputs 
 
-![image-20191011125837549](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_8.png)
+![image-20191025234156544](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab1/problem8_8.png)
 
 ###### Describe and analyze
 

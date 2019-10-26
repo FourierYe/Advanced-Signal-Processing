@@ -1,18 +1,20 @@
-clear
-clc
-t = 0:0.005:2
-x_t = cos(20*pi * t)
-subplot(2, 1, 1)
-plot(t, x_t)
-title('The time space of cos(20*\pi * t)')
-xlabel('t axis')
-ylabel('x_t=cos(20*\pi * t)')
-[f, s] = ft(t, x_t)
-subplot(2, 1, 2)
-plot(f, s)
-title('The frequency space of cos(20*\pi * t)')
-xlabel('s axis')
-ylabel('x_s')
+% clear
+% clc
+% t = 0:0.001:2
+% x_t = sin(20*pi * t)
+% subplot(2, 1, 1)
+% plot(t, x_t)
+% grid on
+% title('The time space of sin(20*\pi * t)')
+% xlabel('t axis')
+% ylabel('x_t=sin(20*\pi * t)')
+% [f, s] = ft(t, x_t)
+% subplot(2, 1, 2)
+% plot(f, abs(s))
+% grid on
+% title('The frequency space of sin(20*\pi * t)')
+% xlabel('s axis')
+% ylabel('x_s')
 
 % result
 % As we can see the fourier transformation of sin(w_0*x) is the sum of two Dirac function.

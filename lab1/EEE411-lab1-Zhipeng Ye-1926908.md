@@ -534,7 +534,7 @@ plot(t(col),sinc_set(col),'m+')
 
 ###### Describe and analyze
 
-As we can see from diagram, the function shake around the $zero(0)$ and the interval of zeros is constant because $sin(\pi t)$ is a period function but $kx$ is a nonperiodic function. So the combination of two functions is a period of $2 \pi / \pi = 2$ function. 
+As we can see from diagram, the function shake around the $zero(0)$ and the interval of zeros is constant because $sin(\pi t)$ is a period function but $kx$ is a nonperiodic function. So the combination of two functions is a period of $2 \pi / \frac{1}{2}\pi = 4$ function and it has two zeors at one period. Therefore the zeros are at $[-2,2,4,6,8...]$ $2k, k\in Z ，Z \neq 0 $ .
 
 ---
 

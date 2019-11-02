@@ -1,15 +1,15 @@
 function str = create_test_sequence(length)
 
 if(mod(length,2) == 1)
-    length = length +1
+    length = length +1;
 end
 
-str = ''
+str = '';
 for i =1:length
     if(rand>0.5)
-        str(i) = '1'
+        str(i) = '1';
     else
-        str(i) = '0'
+        str(i) = '0';
     end
     
 end

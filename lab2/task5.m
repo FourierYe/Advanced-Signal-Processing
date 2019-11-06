@@ -1,5 +1,5 @@
 T_s = 2;
-T_0 = 2/10;
+T_0 = 2/10/1000;
 t = -2*T_s:T_0:6*T_s;
 
 singals_points = modulator(5)

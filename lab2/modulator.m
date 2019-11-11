@@ -1,5 +1,6 @@
-function transmit_signal = modulator(size)
+function transmit_signals = modulator(size)
 
+transmit_signals = []
 alphabet = containers.Map({'00', '01', '11','10'},...
     {'4', '2', '-2','-4'});
 
@@ -11,10 +12,15 @@ value = split(decode_value,',')
 
 a_k = str2num(char(value))
 
-T_s = 2;
-T_0 = 2/10/1000;
+length_ak = length(a_k)
+T_s = 2/1000;
+T_0 = T_s/10;
 t = -2*T_s:T_0:6*T_s;
 p = @(t) rect((t-T_s/2)/T_s);
-transmit_signal = a_k * p(t-1*T_s);
+
+for i = 1:length_ak
+    transmit_signal = a_k(i) * p(t-i*T_s);
+    transmit_signals = [transmit_signals;transmit_signal];
+end
 
 end

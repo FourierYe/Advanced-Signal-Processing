@@ -1,18 +1,12 @@
-T_s = 2;
-T_0 = 2/10/1000;
+T_s = 2/1000;
+T_0 = T_s/10;
 t = -2*T_s:T_0:6*T_s;
 
-singals_points = modulator(5)
+singals_points = modulator(4)
 
 [m,n] = size(singals_points)
 
-for i=1:m
-   
-    plot(t,singals_points(i,:))
-    hold on 
-end
+singal_points = sum(singals_points)
+plot(t, singal_points)
 
-axis([-3,9,-5,5])
-
-
-legend('x_1','x_2','x_3','x_4')
+axis([0*T_s, 6*T_s, -5 5])

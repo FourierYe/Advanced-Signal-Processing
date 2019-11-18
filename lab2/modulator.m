@@ -1,18 +1,16 @@
-function transmit_signals = modulator(size)
+function transmit_signals = modulator(sequence)
 
 transmit_signals = []
-alphabet = containers.Map({'00', '01', '11','10'},...
-    {'4', '2', '-2','-4'});
 
-str = create_test_sequence(size*2);
-
-decode_value = decode_binary(str,alphabet)
+% decode sequence
+decode_value = decode_binary(sequence)
 
 value = split(decode_value,',')
 
 a_k = str2num(char(value))
 
 length_ak = length(a_k)
+
 T_s = 2/1000;
 T_0 = T_s/10;
 t = -2*T_s:T_0:6*T_s;

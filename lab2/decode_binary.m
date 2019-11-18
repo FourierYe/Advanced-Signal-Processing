@@ -1,5 +1,7 @@
-function origianl_code = decode_binary(encode_squence,alphabet)
+function origianl_code = decode_binary(encode_squence)
 
+alphabet = containers.Map({'00', '01', '11','10'},...
+    {'4', '2', '-2','-4'});
 length_value = length(encode_squence);
 origianl_code = "";
 

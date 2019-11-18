@@ -5,4 +5,6 @@ p=rect((t-T_s/2)/T_s);
 
 plot(t,p);
 
+xlabel('sec')
+title('p(t), Ts = 2msec')
 axis([-1*T_s,2*T_s,0,2])

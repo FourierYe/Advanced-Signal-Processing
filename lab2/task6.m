@@ -8,3 +8,5 @@ t = -2*T_s:T_0:6*T_s
 h_t = match_filter(t);
 
 plot(t, h_t)
+title('h(t)')
+axis([-2/1000, 5/1000, 0 , 2])

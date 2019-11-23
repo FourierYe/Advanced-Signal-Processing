@@ -1,11 +1,13 @@
-function zk = generate_zk(Z)
+function zk = generate_zk(Z,num)
 
-zk = []
-step = 10
+% @paraam Z means sequence
+% @param num means the number of symbol    
 
-for i = 41:step:length(Z)
-    if abs(Z(i))>1
-        zk = [zk Z(i)]
-    end
+zk = [];
+step = 10;
+stop_value = 11 + num * step;
+
+for i = 21:step:stop_value
+    zk = [zk Z(i)];
 end
 end

@@ -1,22 +1,28 @@
 function bk = match_filter_test(binary_sequence, mu, variance)
-signals_points = modulator(binary_sequence)
 
-xt = sum(signals_points);
+% generate original signal
+signals_points = modulator(binary_sequence);
 
-xt_noisy = add_noise_parameters(xt,mu,variance);
+% add noise to original signal
+xt_noisy = add_noise_parameters(signals_points,mu,variance);
 
-T_s = 2/1000
-T_0 = T_s /10
-t = -2*T_s:T_0:6*T_s
+% create h(t) signal
+T_s = 2/1000;
+T_0 = T_s /10;
+t = 0:T_0:6*T_s;
 
-ht = match_filter(t)
+ht = match_filter(t);
 
-Z = T_0/T_s * conv(xt_noisy,ht)
+% convolute x(t) and h(t)
+Z = T_0/T_s * conv(xt_noisy,ht);
 
-zk = generate_zk(Z)
+% samping zk from zt
+zk = generate_zk(Z,4);
 
-ak = map_zk_to_ak(zk)
+% map zk to ak
+ak = map_zk_to_ak(zk);
 
-bk = demapper(ak)
+% map ak to bk
+bk = demapper(ak);
 
 end

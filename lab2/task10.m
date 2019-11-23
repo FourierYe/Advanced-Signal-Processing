@@ -1,2 +1,2 @@
 % follow by previous step
-zk = generate_zk(Z)
+zk = generate_zk(Z,4)

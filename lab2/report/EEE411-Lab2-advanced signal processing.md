@@ -1,4 +1,4 @@
-# EEE411 Advanced Signal Processing
+# EEE411 Lab2 Advanced Signal Processing
 
 ####Author: Zhipeng Ye
 
@@ -6,7 +6,7 @@
 
 #### Faculty: MSc Multimedia Telecommunications
 
-#### Data: 21th October 2019
+#### Data: 21th November 2019
 
 
 

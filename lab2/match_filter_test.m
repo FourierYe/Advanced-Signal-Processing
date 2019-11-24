@@ -1,5 +1,8 @@
 function bk = match_filter_test(binary_sequence, mu, variance)
 
+% @ param mu is mean of noise
+% @ param variance is the variance of noise
+
 % generate original signal
 signals_points = modulator(binary_sequence);
 

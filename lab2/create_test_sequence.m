@@ -1,5 +1,7 @@
 function str = create_test_sequence(length)
 
+% length means the length of binary sequence
+
 if(mod(length,2) == 1)
     length = length +1;
 end

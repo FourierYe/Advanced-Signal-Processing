@@ -72,7 +72,7 @@ decode_value =
 
 ##### Analysis
 
-##### As we can see from result,  I can use this function to implement mapping. However I use hashmap to code, because this kind of data structure is very powerful and can be seen in most program languages. It is a key-value structure and use hash function for mapping fastly. By the way, we can use $if - else$ to implement this function too but it is a not beautiful method. 
+##### As we can see from result,  I can use this function to implement mapping. However I use hashmap which is called dictionary in python to code, because this kind of data structure is very powerful and can be seen in most program languages. It is a key-value structure and use hash function for mapping fastly. By the way, we can use $if - else$ to implement this function too but it is a not beautiful method. 
 
 #### Next, write a Matlab function that maps a sequence of data bits to the LAB function that maps a sequence of modulation symbols. 
 
@@ -120,7 +120,7 @@ decode_value =
 
 ##### Sketch
 
-
+<img src="/Users/geekye/Documents/Courses/advanced signal processing/lab/lab2/report/task2_2.jpeg" alt="task2_2" style="zoom: 50%;" />
 
 ##### Code 
 
@@ -162,11 +162,11 @@ $$
 
 ##### Sketch
 
-
+<img src="/Users/geekye/Documents/Courses/advanced signal processing/lab/lab2/report/task3_2.jpeg" style="zoom:50%;" />
 
 ##### Analysis
 
-##### The sketch is a sequence of signal and corresponding to theoretical curve.
+I choose ${4,2,-2,-4}$ as modulation symbols and $00011110$ as bit sequence. The sketch is a sequence of signal and corresponding to theoretical curve.
 
 ---
 
@@ -297,7 +297,7 @@ axis([0, 6*T_s, -5 5])
 
 ##### Analysis
 
-##### The transmit signal is corresponding to previous 2 problems. However the signal is $x_k(t) = a_k · p(t-T_s)$ in problem 4, and the signal is $x(t) = \sum_{k=1}^{K} a_k ·p(t-kT_s).$ in problem 5. Therefore, there is a little difference between them. But essence of these problem is same.
+##### The transmit signal is corresponding to previous 2 problems. However the signal is $x_k(t) = a_k · p(t-T_s)$ in problem 4, and the signal is $x(t) = \sum_{k=1}^{K} a_k ·p(t-kT_s)$ in problem 5. Therefore, there is a little difference between them.Because $x(t)$ is the sum of $x_k(t)$. But essence of these problem is same.
 
 ---
 
@@ -321,7 +321,7 @@ A[Recv Filter] -->|zt|B(Sampler)
 
 ##### Sketch
 
-
+<img src="/Users/geekye/Documents/Courses/advanced signal processing/lab/lab2/report/task5_2.jpeg" style="zoom:50%;" />
 
 ##### Code 
 
@@ -587,6 +587,8 @@ zk =
 
 ##### I use the 10 magnitude of step or 0.002 in time to obtain $z_k$ from $z(t)$, because we can find the interval of $z_k(t)$ is 0.002, and we use 10 samping points per period. Therefore, I use 10 samping length to get $z_k$. 
 
+---
+
 ### Problem 11 (12 points)
 
 #### Assume now transmission over an AWGN channel: $y(t) = x(t)+w(t)$. With Matlab you can obtain a noisy receive signal with the following commands: 
@@ -618,12 +620,14 @@ subplot(2,2,1)
 plot(t,singals_points)
 grid on
 axis([0 max(t) -5 5]) 
+title('x(t)')
 
-signal_noise_y = add_noise(singals_points)
+signal_noise_y = add_noise_parameters(singals_points,0,1)
 subplot(2,2,2)
 plot(t,signal_noise_y)
 grid on
 axis([0 max(t) -8 8]) 
+title('x(t) + noise')
 
 h_t = match_filter(t);
 
@@ -633,23 +637,39 @@ tz = T_0*(1:length(z_t))
 plot(tz,z_t)
 grid on
 axis([0 max(tz) -5 5])
+title('z(t)')
 
 z_t_noise =  T_0/T_s*conv(signal_noise_y, h_t)
 subplot(2,2,4)
 plot(tz,z_t_noise)
 grid on
 axis([0 max(tz) -5 5])
+title('z(t) + noise')
 
 zk = generate_zk(z_t_noise,4)
 ```
 
 ##### Result
 
-<img src="/Users/geekye/Documents/Courses/advanced signal processing/lab/lab2/report/task11.png" alt="image-20191122183735065" style="zoom:50%;" />
+<img src="/Users/geekye/Documents/Courses/advanced signal processing/lab/lab2/report/task11.png" alt="image-20191124153010551" style="zoom:50%;" />
+
+<center>noise with 1 variance</center>
+
+<img src="/Users/geekye/Documents/Courses/advanced signal processing/lab/lab2/report/task11_2.png" alt="image-20191124180700195" style="zoom:50%;" />
+
+<center>noise with 5 varian </center>
+
+<img src="/Users/geekye/Documents/Courses/advanced signal processing/lab/lab2/report/task11_3.png" alt="image-20191124180815640" style="zoom:50%;" />
+
+<center>
+  noise with 10 variance
+</center>
 
 ##### Analysis
 
-##### 
+As we can see from result, I choose various variance noise to experiment. Noise damage the signal on $y(t)$ and $z(t)$ to some extend. However noise has a bigger impact on $y(t)$ than $z(t)$. Noise almost destroy shape of $y(t)$, but $z(t)$ can be distinguished when variance of noise is 10. Therefore, it is easier to estimate the transmitted modulation symbol $a_k$ from $z(t)$.
+
+---
 
 ### Problem 12 (6 points)
 
@@ -701,7 +721,9 @@ ak =
 
 ##### Analysis
 
+I use the distance to get the closest point. For example, when we receive $2.1$ , we can calculate the distance to vector $[4,2,-2,-4]$. Then the result is $[1.9,0.1,4.1,6.1]$. Therefore the shortest distance is $0.1$ and $0.1$ is the absolute value of $2.1 - 2$ . Finally, the answer is 2. In addition, I use hashmap which is called dictionary in python to implement the mapping from distance to modulation symbol.
 
+---
 
 ### Problem 13 (6 points)
 
@@ -747,7 +769,7 @@ bk =
 
 ##### Analysis
 
-
+Because I use the hashmap (dictionary) in the form of $00 - 4$ in previous problems. In this problem, I use the hashmap in the form of $-4 - 00$ to map which is similar to previous function.
 
 ### Digital transmission system 
 
@@ -763,6 +785,9 @@ bk =
 
 ```matlab
 function bk = match_filter_test(binary_sequence, mu, variance)
+
+% @ param mu is mean of noise
+% @ param variance is the variance of noise
 
 % generate original signal
 signals_points = modulator(binary_sequence);
@@ -795,6 +820,8 @@ end
 ```matlab
 function str = create_test_sequence(length)
 
+% length means the length of binary sequence
+
 if(mod(length,2) == 1)
     length = length +1;
 end
@@ -811,9 +838,25 @@ end
 end
 ```
 
+```matlab
+original_sequence = create_test_sequence(8);
+bk = match_filter_test(original_sequence,0,1);
+```
+
+##### Result
+
+```matlab
+original_sequence =
+
+    '01010010'
+bk =
+
+    '01010010'
+```
+
 ##### Analysis
 
-
+As we can see from result, when noise with variance of 1, signal can be recover successfully. It is expected.
 
 ### Problem 15 (6 points)
 
@@ -826,16 +869,30 @@ original_sequence_list = []
 bk_list = []
 
 % increase variance to test function
-for i = 1:50
-original_sequence = create_test_sequence(8);
-bk = match_filter_test(original_sequence,0,5);
-
-original_sequence_list = [original_sequence_list;original_sequence]
-bk_list = [bk_list;bk] 
+for i = 1:100
+    original_sequence = create_test_sequence(8);
+    bk = match_filter_test(original_sequence,0,i);
+    
+    original_sequence_list = [original_sequence_list;original_sequence]
+    bk_list = [bk_list;bk]
 end
 
 % check different index
 error_position = original_sequence_list ~= bk_list
+
+[m,n] = size(error_position)
+
+% find the variance when error happen 
+variance_position = []
+for i = 1:m
+    if(ismember(1,error_position(i,:)))
+        sprintf('When variance is %d, function cause error.',i) 
+        variance_position = [variance_position,i]
+    end
+end
+
+% show the density of error
+scatter(variance_position,variance_position)
 ```
 
 ##### Result
@@ -849,53 +906,56 @@ error_position =
    0   0   0   0   0   0   0   0
    0   0   0   0   0   0   0   0
    0   0   0   0   0   0   0   0
+   % 0   1   0   0   1   0   0   0
    0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   % 0   1   0   0   0   0   0   0 exist eroor
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   % 0   0   0   1   0   0   0   0 exist eroor
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   % 0   0   0   0   0   0   0   1 exist eroor
+   % 0   0   0   1   0   0   0   0
+   % 0   0   0   1   0   0   0   0
+   % 0   0   0   0   0   1   0   0
    0   0   0   0   0   0   0   0
    0   0   0   0   0   0   0   0
    0   0   0   0   0   0   0   0
    0   0   0   0   0   0   0   0
    0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   % 0   0   0   0   0   1   0   0 exist eroor
-   0   0   0   0   0   0   0   0
+   % 0   0   1   0   0   0   0   1
    0   0   0   0   0   0   0   0
    0   0   0   0   0   0   0   0
+   % 0   1   0   0   0   1   0   1
+   0   0   0   0   0   0   0   0
+   % 0   1   0   1   1   0   0   0
+   0   0   0   0   0   0   0   0
+   % 0   1   0   0   0   0   0   1
+   % 0   1   0   0   0   0   0   0
+   % 0   0   0   1   0   0   0   0
+   0   0   0   0   0   0   0   0
+   % 0   0   0   1   0   0   0   1
    0   0   0   0   0   0   0   0
    0   0   0   0   0   0   0   0
+   % 0   1   0   0   0   0   0   0
    0   0   0   0   0   0   0   0
-   % 0   0   0   0   0   1   0   0 exist eroor
-   % 0   1   0   0   0   0   0   0 exist eroor
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
+   % 0   0   0   1   0   1   0   1
    0   0   0   0   0   0   0   0
    0   0   0   0   0   0   0   0
-   % 0   0   0   0   0   0   0   1 exist eroor
+   % 0   0   0   0   0   1   0   0
+   % 0   0   0   0   1   0   0   0
+   % 0   0   0   0   0   1   0   1
    0   0   0   0   0   0   0   0
+   % 0   0   0   1   0   1   0   0
+   % 0   1   0   1   0   0   0   1
+   % 0   0   0   0   0   0   0   1
+   % 1   0   0   0   0   0   0   0
    0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   % 0   0   0   0   0   0   0   1 exist eroor
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   0   0   0
-   0   0   0   0   0   1   0   0
+   % 0   0   0   1   1   0   0   1
+   % 1   0   1   0   1   0   0   0
+   % 0   0   0   0   0   1   0   0
+   % 0   0   1   0   0   0   0   0
+   % 0   1   0   0   0   1   0   1
+   % 0   1   0   0   0   0   0   1
+   % 0   1   0   0   0   0   0   0
+   % 0   0   0   0   0   1   0   0
 ```
+
+![image-20191124190851993](/Users/geekye/Documents/Courses/advanced signal processing/lab/lab2/report/task15.png)
 
 ##### Analysis
 
+I test my function by changing vatiance from $1$ to $100$. Firstly, I write a function to find the error position of different variance. I find the frequency of error become larger when varance become larger. They are positively correlated. Therefore, I plot the figure about this position when error happen. It is obvious that when noise become larger, the function can't recover signal successfully. However, when variance is smaller than 20. The system has a good performance. Therefore, the result is expected.  
